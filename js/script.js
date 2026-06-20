@@ -2,6 +2,70 @@
             // Current year
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+            // Theme selection
+            const themeSelect = document.getElementById('themeSelect');
+            const themeIcon = document.querySelector('.theme-switcher-icon');
+            const systemThemeQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+            function getStoredThemePreference() {
+                try {
+                    return localStorage.getItem('themePreference') || 'auto';
+                } catch (error) {
+                    return 'auto';
+                }
+            }
+
+            function storeThemePreference(preference) {
+                try {
+                    localStorage.setItem('themePreference', preference);
+                } catch (error) {
+                    // Theme still changes for this session if storage is unavailable.
+                }
+            }
+
+            function resolveTheme(preference) {
+                if (preference === 'dark' || preference === 'light') {
+                    return preference;
+                }
+                return systemThemeQuery && systemThemeQuery.matches ? 'dark' : 'light';
+            }
+
+            function applyTheme(preference) {
+                const activeTheme = resolveTheme(preference);
+                document.documentElement.dataset.theme = activeTheme;
+                document.documentElement.dataset.themePreference = preference;
+                if (themeSelect) {
+                    themeSelect.value = preference;
+                }
+                if (themeIcon) {
+                    themeIcon.textContent = activeTheme === 'dark' ? '☾' : '☼';
+                }
+            }
+
+            const initialThemePreference = getStoredThemePreference();
+            applyTheme(initialThemePreference);
+
+            if (themeSelect) {
+                themeSelect.addEventListener('change', () => {
+                    const preference = themeSelect.value;
+                    storeThemePreference(preference);
+                    applyTheme(preference);
+                });
+            }
+
+            if (systemThemeQuery) {
+                const handleSystemThemeChange = () => {
+                    if (getStoredThemePreference() === 'auto') {
+                        applyTheme('auto');
+                    }
+                };
+                if (systemThemeQuery.addEventListener) {
+                    systemThemeQuery.addEventListener('change', handleSystemThemeChange);
+                } else if (systemThemeQuery.addListener) {
+                    systemThemeQuery.addListener(handleSystemThemeChange);
+                }
+            }
+
             // Scroll progress bar
             const scrollProgress = document.getElementById('scrollProgress');
             window.addEventListener('scroll', () => {

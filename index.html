@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zareen Tasneem — Business Analyst</title>
     <meta name="description" content="Zareen Tasneem — Junior Business Analyst specializing in requirements gathering, process analysis, and bridging business needs with technical implementation.">
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('themePreference') || 'auto';
+                var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var activeTheme = savedTheme === 'auto' ? (prefersDark ? 'dark' : 'light') : savedTheme;
+                document.documentElement.dataset.theme = activeTheme;
+                document.documentElement.dataset.themePreference = savedTheme;
+            } catch (error) {
+                document.documentElement.dataset.theme = 'light';
+                document.documentElement.dataset.themePreference = 'auto';
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +40,16 @@
                 <li><a href="#skills" data-nav="skills">Skills</a></li>
                 <li><a href="#contributions" data-nav="contributions">Contributions</a></li>
                 <li><a href="#education" data-nav="education">Education</a></li>
+                <li class="theme-nav-item">
+                    <label class="theme-switcher" for="themeSelect">
+                        <span class="theme-switcher-icon" aria-hidden="true">☼</span>
+                        <select id="themeSelect" aria-label="Select color theme">
+                            <option value="auto">Auto</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </label>
+                </li>
                 <li><a href="#contact" class="nav-cta" data-nav="contact">Get In Touch</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -159,10 +183,10 @@
         <div class="contributions-grid">
             <div class="contribution-card reveal reveal-delay-1">
                 <div class="cc-date">Dec 2024 – Present · Kendroo Limited</div>
-                <h3>Odoo Business Workflow Optimization</h3>
-                <p>Gathering business requirements, configuring Odoo modules, and optimizing workflows for better efficiency. Customizing reports and dashboards while training users on Odoo functionality. Preparing SRS/BRD documents and bridging communication between stakeholders and technical teams.</p>
+                <h3>Odoo Functional Consultant</h3>
+                <p>Providing functional consulting services for Odoo implementations, including requirement gathering, system configuration, and user training.</p>
                 <div class="cc-tags">
-                    <span class="cc-tag">Odoo</span><span class="cc-tag">Workflow Optimization</span><span class="cc-tag">User Training</span><span class="cc-tag">Documentation</span>
+                    <span class="cc-tag">Odoo</span><span class="cc-tag">Functional Consulting</span><span class="cc-tag">User Training</span>
                 </div>
             </div>
             <div class="contribution-card reveal reveal-delay-2">
@@ -194,13 +218,11 @@
                 <div class="tl-date">Jan 2023 – Jan 2024</div>
                 <h3>Master of Social Science (M.S.S) — Economics</h3>
                 <p class="tl-sub">Jagannath University, Dhaka · Field: Social Sciences</p>
-                <span class="tl-grade">Final Grade: 2.87</span>
             </div>
             <div class="timeline-item reveal reveal-delay-2">
                 <div class="tl-date">Jan 2018 – Dec 2021</div>
                 <h3>Bachelor of Social Science (B.S.S) — Economics</h3>
                 <p class="tl-sub">Jagannath University, Dhaka</p>
-                <span class="tl-grade">Final Grade: 3.01</span>
             </div>
             <div class="timeline-item reveal reveal-delay-3">
                 <div class="tl-date">2015 – 2017</div>
