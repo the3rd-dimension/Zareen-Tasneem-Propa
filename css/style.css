@@ -83,7 +83,7 @@
             left: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--accent), #14b8a6, var(--accent-dark));
-            z-index: 1001;
+            z-index: 1003;
             border-radius: 0 2px 2px 0;
             transition: width 0.1s linear;
         }
@@ -1090,7 +1090,7 @@
             position: fixed;
             inset: 0;
             background: var(--overlay);
-            z-index: 1000;
+            z-index: 999;
             opacity: 0;
             pointer-events: none;
             transition: opacity var(--transition);
