@@ -182,10 +182,10 @@
             // Typing effect
             const typingTextEl = document.getElementById('typingText');
             const phrases = [
-                'Bridging business needs with technical implementation.',
-                'Driving data-driven decision-making.',
-                'Optimizing workflows for real impact.',
-                'Turning requirements into actionable solutions.',
+                'Business Analyst for practical ERP solutions.',
+                'Odoo ERP implementation and functional consultancy.',
+                'Turning requirements into clear documentation.',
+                'Improving workflows through thoughtful analysis.',
             ];
             let phraseIndex = 0;
             let charIndex = 0;
